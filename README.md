@@ -1,6 +1,6 @@
 # Quasar App (primeiro-app)
 
-A Quasar Project teste
+A Quasar Project
 
 ## Install the dependencies
 ```bash
