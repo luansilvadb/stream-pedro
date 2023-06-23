@@ -1,30 +1,27 @@
 <template>
-  <q-layout view="hhr LpR fFf">
+  <q-layout view="hHh LpR fFf">
 
     <q-header elevated class="bg-primary text-white">
       <q-toolbar>
+        <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
+
         <q-toolbar-title>
           <q-avatar>
-            <img src="https://i.imgur.com/zuGML8J.png">
+            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
           </q-avatar>
-          Soraka Bananuda
+          Title
         </q-toolbar-title>
 
         <q-btn dense flat round icon="menu" @click="toggleRightDrawer" />
-
       </q-toolbar>
     </q-header>
 
-    <q-drawer show-if-above v-model="rightDrawerOpen" side="right" bordered :width="400">
-      <q-container  >
-        <div >
-    <q-video
-      :ratio="16/9"
+    <q-drawer show-if-above v-model="leftDrawerOpen" side="left" elevated>
+      <!-- drawer content -->
+    </q-drawer>
 
-      src="https://www.youtube-nocookie.com/embed/_lfCATP8cMw"
-    />
-  </div>
-      </q-container>
+    <q-drawer show-if-above v-model="rightDrawerOpen" side="right" elevated>
+      <!-- drawer content -->
     </q-drawer>
 
     <q-page-container>
@@ -39,9 +36,15 @@ import { ref } from 'vue'
 
 export default {
   setup () {
+    const leftDrawerOpen = ref(false)
     const rightDrawerOpen = ref(false)
 
     return {
+      leftDrawerOpen,
+      toggleLeftDrawer () {
+        leftDrawerOpen.value = !leftDrawerOpen.value
+      },
+
       rightDrawerOpen,
       toggleRightDrawer () {
         rightDrawerOpen.value = !rightDrawerOpen.value
