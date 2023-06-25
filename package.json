@@ -9,8 +9,7 @@
     "lint": "eslint --ext .js,.vue ./",
     "test": "echo \"No test specified\" && exit 0",
     "dev": "quasar dev",
-    "build": "quasar build",
-    "deploy": "push-dir --dir=dist/spa --remote=gh-pages --branch=main"
+    "build": "quasar build"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
@@ -22,7 +21,6 @@
     "plyr": "^3.7.8",
     "quasar": "^2.6.0",
     "twitch-player": "^2.0.2",
-    "video.js": "^8.3.0",
     "vue": "^3.0.0",
     "vue-plyr": "^7.0.0",
     "vue-router": "^4.0.0"
