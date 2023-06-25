@@ -164,9 +164,9 @@ module.exports = configure(function (ctx) {
       },
 
       manifest: {
-        name: 'SorakaFlix',
-        short_name: 'SorakaFlix',
-        description: 'Lives todos os dias às 20h.',
+        name: 'Quasar App',
+        short_name: 'Quasar App',
+        description: 'A Quasar Project',
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',

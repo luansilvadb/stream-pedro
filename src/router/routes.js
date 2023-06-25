@@ -5,6 +5,7 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     meta: {
       title: 'SorakaFlix'
+
     },
     children: [
       { path: '', component: () => import('pages/IndexPage.vue') }
