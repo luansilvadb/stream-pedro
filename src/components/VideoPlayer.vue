@@ -14,7 +14,6 @@ export default {
       controls: [
         'play-large', // botão de play grande no centro
         'play',
-        'current-time', // botão de play
         'mute', // botão de mudo
         'volume', // controle de volume
         'settings', // botão de configurações
