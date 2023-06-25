@@ -1,7 +1,7 @@
 <template >
   <div>
-  <loading-animation v-if="isLoading" />
-  <div v-else>
+  <!-- <loading-animation v-if="isLoading" />
+  <div v-else> -->
   <q-layout view="hHh LpR fFf" :class="$q.dark.isActive ? 'bg-primary text-white' : 'bg-primary text-white'">
 
     <q-header reveal elevated class="bg-primary text-white">
@@ -108,7 +108,7 @@
 
   </q-layout>
 </div>
-  </div>
+  <!-- </div> -->
 </template>
 <style>
   #video_embed,
@@ -121,24 +121,24 @@
 
 <script>
 import { ref } from 'vue'
-import LoadingAnimation from 'src/components/LoadingAnimation.vue'
+// import LoadingAnimation from 'src/components/LoadingAnimation.vue'
 
 export default {
   components: {
-    LoadingAnimation
+    // LoadingAnimation
   },
 
   setup () {
-    const isLoading = ref(true)
+    // const isLoading = ref(true)
     const leftDrawerOpen = ref(false)
     const rightDrawerOpen = ref(false)
 
     setTimeout(() => {
-      isLoading.value = false
+      // isLoading.value = false
     }, 3000)
 
     return {
-      isLoading,
+      // isLoading,
       leftDrawerOpen,
       drawer: ref(false),
       miniState: ref(true),
