@@ -84,7 +84,7 @@
       <q-drawer reveal elevated show-if-above v-model="rightDrawerOpen" side="right" width="400" :class="$q.dark.isActive ? 'bg-dark text-white' : 'bg-primary text-white'">
   <iframe
     id="video_embed"
-    src="https://player.twitch.tv/?channel=sorakabananuda&parent=example.com"
+    src="https://player.twitch.tv/?channel=sorakabananuda&parent=stream.luansilva.com.br"
     height="40%"
     width="100%"
     frameborder="0"
@@ -95,7 +95,7 @@
     frameborder="0"
     scrolling="no"
     id="chat_embed"
-    src="https://www.twitch.tv/embed/sorakabananuda/chat?parent=example.com&darkpopout"
+    src="https://www.twitch.tv/embed/sorakabananuda/chat?parent=stream.luansilva.com.br&darkpopout"
     height="58%"
     width="100%"
     style="border: none;">
