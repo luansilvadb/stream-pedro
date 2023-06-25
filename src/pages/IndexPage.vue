@@ -8,8 +8,10 @@
 import VideoPlayer from 'src/components/VideoPlayer.vue'
 
 export default {
+
   components: {
     VideoPlayer
+
   }
 }
 </script>

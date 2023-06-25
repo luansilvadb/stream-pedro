@@ -127,6 +127,7 @@ export default {
   components: {
     LoadingAnimation
   },
+
   setup () {
     const isLoading = ref(true)
     const leftDrawerOpen = ref(false)

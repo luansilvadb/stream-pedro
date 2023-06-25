@@ -25,6 +25,10 @@ export default route(function (/* { store, ssrContext } */) {
     // quasar.conf.js -> build -> publicPath
     history: createHistory(process.env.MODE === 'ssr' ? void 0 : process.env.VUE_ROUTER_BASE)
   })
+  Router.beforeEach((to, from, next) => {
+    document.title = to.meta.title || 'Default Title'
+    next()
+  })
 
   return Router
 })
