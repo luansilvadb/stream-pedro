@@ -1,17 +1,15 @@
-<template>
-  <q-page class="flex flex-center">
-    <img
-      alt="Quasar logo"
-      src="~assets/quasar-logo-vertical.svg"
-      style="width: 200px; height: 200px"
-    >
-  </q-page>
+<template >
+  <div>
+    <VideoPlayer></VideoPlayer>
+  </div>
 </template>
 
 <script>
-import { defineComponent } from 'vue'
+import VideoPlayer from 'src/components/VideoPlayer.vue'
 
-export default defineComponent({
-  name: 'IndexPage'
-})
+export default {
+  components: {
+    VideoPlayer
+  }
+}
 </script>
