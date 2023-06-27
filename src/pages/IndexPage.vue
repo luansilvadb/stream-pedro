@@ -2,6 +2,7 @@
   <div>
     <VideoPlayer></VideoPlayer>
   </div>
+
 </template>
 
 <script>

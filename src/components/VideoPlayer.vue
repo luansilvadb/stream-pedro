@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div >
     <video id="my-video"></video>
   </div>
 </template>
@@ -20,8 +20,8 @@ export default {
         'pip', // picture-in-picture
         'airplay', // botão airplay
         'fullscreen' // botão de tela cheia
-
-      ]
+      ],
+      volume: 0.2 // Definir volume inicial para 20%
     })
 
     if (Hls.isSupported()) {
@@ -41,4 +41,5 @@ export default {
 @import '~plyr/dist/plyr.css';
 
 /* Estilos adicionais ou personalizados */
+
 </style>

@@ -1,31 +1,36 @@
 <template>
   <div>
-    <q-layout view="hHh LpR fFf" :class="$q.dark.isActive ? 'bg-primary text-white' : 'bg-primary text-white'">
-      <q-header reveal elevated class="bg-primary text-white">
-        <q-toolbar>
-          <q-btn dense flat round icon="menu" @click="drawer = !drawer" />
-          <q-toolbar-title class="toolbar-title">
-            <router-link :to="{ path: '/' }" class="router-link">
-              <q-avatar>
-                <img src="../assets/logo-main.png">
-              </q-avatar>
-              SorakaFlix
-            </router-link>
-          </q-toolbar-title>
-          <q-btn dense flat round icon="menu" @click="toggleRightDrawer" />
-        </q-toolbar>
-      </q-header>
+    <q-layout view="hHh LpR fFf" :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']">
+      <q-header :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']">
+    <q-toolbar >
+      <q-btn dense flat round icon="menu" @click="toggleDrawer" />
+      <q-toolbar-title class="toolbar-title" >
+        <router-link
+          :to="{ path: '/' }"
+          class="router-link"
+          @mouseover="hover = true"
+          @mouseleave="hover = false"
+        >
+          <q-avatar >
+            <img src="../assets/logo-main.png" />
+          </q-avatar >
+          <b :style="{color: getColor()}">SorakaFlix</b>
+
+        </router-link>
+      </q-toolbar-title >
+      <q-btn  dense flat round icon="dark_mode" @click="toggleDarkMode" />
+      </q-toolbar>
+    </q-header>
 
       <q-drawer
         v-model="drawer"
         show-if-above
-        reveal elevated
         :mini="miniState"
         @mouseover="miniState = false"
         @mouseout="miniState = true"
         :width="200"
         :breakpoint="500"
-        :class="$q.dark.isActive ? 'bg-dark text-white' : 'bg-primary text-white'"
+        :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']"
       >
         <q-scroll-area class="fit">
           <q-list>
@@ -44,40 +49,35 @@
         </q-scroll-area>
       </q-drawer>
 
-      <q-drawer reveal elevated show-if-above v-model="rightDrawerOpen" side="right" width="400" :class="$q.dark.isActive ? 'bg-dark text-white' : 'bg-primary text-white'">
-        <iframe
-          id="video_embed"
-          src="https://player.twitch.tv/?channel=sorakabananuda&parent=stream.luansilva.com.br"
-          height="40%"
-          width="100%"
-          frameborder="0"
-          scrolling="no"
-          style="border: none;"
-        ></iframe>
-        <iframe
-          frameborder="0"
-          scrolling="no"
-          id="chat_embed"
-          src="https://www.twitch.tv/embed/sorakabananuda/chat?parent=stream.luansilva.com.br&darkpopout"
-          height="58%"
-          width="100%"
-          style="border: none;"
-        ></iframe>
-      </q-drawer>
+      <q-drawer show-if-above v-model="rightDrawerOpen" side="right" width="400" :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']">
+  <div style="position: relative; height: 40%; width: 100%; display: flex; align-items: center; justify-content: center;">
+    <q-spinner v-if="iframeLoading" color="primary" size="7em" />
+    <iframe id="video_embed" src="https://player.twitch.tv/?channel=sorakabananuda&parent=stream.luansilva.com.br" height="100%" width="100%" frameborder="0" scrolling="no" style="border: none;" v-show="!iframeLoading"></iframe>
+  </div>
+
+  <div style="position: relative; height: 58%; width: 100%; display: flex; align-items: center; justify-content: center;">
+    <q-spinner v-if="iframeLoading" color="primary" size="7em" />
+    <iframe frameborder="0" scrolling="no" id="chat_embed" :src="darkModeUrl" @load="iframeLoaded" height="100%" width="100%" style="border: none;" v-show="!iframeLoading"></iframe>
+  </div>
+</q-drawer>
 
       <q-page-container>
         <router-view />
       </q-page-container>
+
     </q-layout>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import { useQuasar } from 'quasar'
 
 const drawer = ref(false)
 const miniState = ref(true)
 const rightDrawerOpen = ref(false)
+const iframeLoading = ref(true)
+const $q = useQuasar()
 
 const menuList = [
   {
@@ -89,48 +89,81 @@ const menuList = [
   {
     icon: 'send',
     label: 'Outbox',
-    separator: false
+    separator: false,
+    route: '/outbox'
   },
   {
     icon: 'delete',
     label: 'Trash',
-    separator: false
+    separator: false,
+    route: '/trash'
   },
   {
     icon: 'error',
     label: 'Spam',
-    separator: true
+    separator: true,
+    route: '/spam'
   },
   {
     icon: 'settings',
     label: 'Settings',
-    separator: false
+    separator: false,
+    route: '/settings'
   },
   {
     icon: 'feedback',
     label: 'Send Feedback',
-    separator: false
+    separator: false,
+    route: '/feedback'
   },
   {
     icon: 'help',
     label: 'Help',
-    separator: false
+    separator: false,
+    route: '/help'
   }
 ]
 
-const toggleRightDrawer = () => {
-  rightDrawerOpen.value = !rightDrawerOpen.value
+const darkModeUrl = computed(() => {
+  return $q.dark.isActive ? 'https://www.twitch.tv/embed/sorakabananuda/chat?parent=stream.luansilva.com.br&darkpopout' : 'https://www.twitch.tv/embed/sorakabananuda/chat?parent=stream.luansilva.com.br'
+})
+
+const toggleDrawer = () => {
+  drawer.value = !drawer.value
+}
+
+const toggleDarkMode = () => {
+  $q.dark.toggle()
+  iframeLoading.value = true
+}
+
+const iframeLoaded = () => {
+  iframeLoading.value = false
+}
+const hover = ref(false)
+
+const getColor = () => {
+  if (hover.value) return '#1976D2'
+  return $q.dark.isActive ? 'white' : 'black'
 }
 </script>
 <style scoped>
-.toolbar-title .router-link {
-  color: white;
+.router-link {
   text-decoration: none;
+
 }
 
-.toolbar-title .router-link:hover,
-.toolbar-title .router-link:focus {
-  text-decoration: none;
+.router-link:hover {
+  cursor: pointer !important;
+}
+
+body.dark .router-link > b {
+  color: white;
+}
+
+body:not(.dark) .router-link > b,
+body.light .router-link > b {
+  color: rgb(0, 0, 0);
 }
 
 </style>
