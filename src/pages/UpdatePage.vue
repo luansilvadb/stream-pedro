@@ -32,6 +32,12 @@ export default {
     return {
       updates: [
         {
+          version: 'v1.0.3',
+          date: '26 Junho, 2023',
+          shortNotes: 'Ajustamos volume de video',
+          notes: 'Ajustamos o volume inicial para 20%'
+        },
+        {
           version: 'v1.0.2',
           date: '25 Junho, 2023',
           shortNotes: 'Adicionamos serviço RTMP',

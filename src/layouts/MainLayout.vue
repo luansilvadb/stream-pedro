@@ -80,42 +80,7 @@ const iframeLoading = ref(true)
 const $q = useQuasar()
 
 const menuList = [
-  {
-    icon: 'inbox',
-    label: 'Inbox',
-    separator: true,
-    route: '/teste'
-  },
-  {
-    icon: 'send',
-    label: 'Outbox',
-    separator: false,
-    route: '/Outbox'
-  },
-  {
-    icon: 'delete',
-    label: 'Trash',
-    separator: false,
-    route: '/trash'
-  },
-  {
-    icon: 'error',
-    label: 'Spam',
-    separator: true,
-    route: '/spam'
-  },
-  {
-    icon: 'settings',
-    label: 'Settings',
-    separator: false,
-    route: '/settings'
-  },
-  {
-    icon: 'feedback',
-    label: 'Send Feedback',
-    separator: false,
-    route: '/feedback'
-  },
+
   {
     icon: 'help',
     label: 'Versão',
