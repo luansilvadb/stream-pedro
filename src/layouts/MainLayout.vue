@@ -90,7 +90,7 @@ const menuList = [
     icon: 'send',
     label: 'Outbox',
     separator: false,
-    route: '/outbox'
+    route: '/Outbox'
   },
   {
     icon: 'delete',
@@ -118,9 +118,9 @@ const menuList = [
   },
   {
     icon: 'help',
-    label: 'Help',
+    label: 'Versão',
     separator: false,
-    route: '/help'
+    route: '/atualizacao'
   }
 ]
 
@@ -146,6 +146,7 @@ const getColor = () => {
   if (hover.value) return '#1976D2'
   return $q.dark.isActive ? 'white' : 'black'
 }
+
 </script>
 <style scoped>
 .router-link {

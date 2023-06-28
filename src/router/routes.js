@@ -1,5 +1,3 @@
-import TestePage from 'src/pages/TestePage.vue'
-
 const routes = [
   {
     path: '/',
@@ -10,7 +8,8 @@ const routes = [
     },
     children: [
       { path: '', component: () => import('pages/IndexPage.vue') },
-      { path: '/teste', name: 'Teste', component: TestePage }
+      { path: 'teste', component: () => import('pages/TestePage.vue') },
+      { path: 'atualizacao', component: () => import('pages/UpdatePage.vue') }
     ]
   },
   // Sempre deixe esta rota como a última,
