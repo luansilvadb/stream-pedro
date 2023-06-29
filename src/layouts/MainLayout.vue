@@ -49,7 +49,7 @@
         </q-scroll-area>
       </q-drawer>
 
-      <q-drawer show-if-above v-model="rightDrawerOpen" side="right" width="400" :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']">
+      <q-drawer show-if-above v-model="rightDrawerOpen" side="right" width="340" :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']">
   <div style="position: relative; height: 40%; width: 100%; display: flex; align-items: center; justify-content: center;">
     <q-spinner v-if="iframeLoading" color="primary" size="7em" />
     <iframe id="video_embed" src="https://player.twitch.tv/?channel=sorakabananuda&parent=stream.luansilva.com.br" height="100%" width="100%" frameborder="0" scrolling="no" style="border: none;" v-show="!iframeLoading"></iframe>
