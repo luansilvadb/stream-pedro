@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div class="video-container">
     <video id="my-video"></video>
   </div>
 </template>
@@ -42,4 +42,14 @@ export default {
 
 /* Estilos adicionais ou personalizados */
 
+.video-container {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  overflow: hidden;
+}
+
+#my-video {
+  width: 100%;
+  height: 100%;
+}
 </style>
