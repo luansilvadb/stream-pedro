@@ -32,6 +32,12 @@ export default {
     return {
       updates: [
         {
+          version: 'v1.0.5',
+          date: '02 Julho, 2023',
+          shortNotes: 'Player',
+          notes: 'Adicionado Border Radius no Player'
+        },
+        {
           version: 'v1.0.4',
           date: '02 Julho, 2023',
           shortNotes: 'Ajustado Dark Mode',
