@@ -32,6 +32,12 @@ export default {
     return {
       updates: [
         {
+          version: 'v1.0.4',
+          date: '02 Julho, 2023',
+          shortNotes: 'Ajustado Dark Mode',
+          notes: 'Adicionado transição do Dark Mode'
+        },
+        {
           version: 'v1.0.3',
           date: '26 Junho, 2023',
           shortNotes: 'Ajustamos volume de video',

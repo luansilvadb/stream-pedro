@@ -43,7 +43,8 @@
           <q-spinner v-if="iframeLoading" :color="$q.dark.isActive ? 'white' : 'primary'" size="7em" />
           <iframe id="video_embed" src="https://player.twitch.tv/?channel=sorakabananuda&parent=stream.luansilva.com.br"
             height="100%" width="100%" frameborder="0" scrolling="no" style="border: none;"
-            v-show="!iframeLoading"></iframe>
+            v-show="!iframeLoading">
+          </iframe>
         </div>
 
         <div
@@ -121,6 +122,6 @@ const getColor = () => {
 
 .bg-dark,
 .bg-white {
-  transition: background-color 1s ease, color 1s ease;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 </style>
