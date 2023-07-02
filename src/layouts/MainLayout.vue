@@ -36,23 +36,50 @@
         </q-scroll-area>
       </q-drawer>
 
-      <q-drawer show-if-above v-model="rightDrawerOpen" side="right" width="340"
-        :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']">
-        <div
-          style="position: relative; height: 40%; width: 100%; display: flex; align-items: center; justify-content: center;">
-          <q-spinner v-if="iframeLoading" color="primary" size="7em" />
-          <iframe id="video_embed" src="https://player.twitch.tv/?channel=sorakabananuda&parent=stream.luansilva.com.br"
-            height="100%" width="100%" frameborder="0" scrolling="no" style="border: none;"
-            v-show="!iframeLoading"></iframe>
-        </div>
+      <q-drawer
+      show-if-above
+      v-model="rightDrawerOpen"
+      side="right"
+      width="340"
+      :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']"
+    >
+      <div
+        style="position: relative; height: 40%; width: 100%; display: flex; align-items: center; justify-content: center;"
+        class="iframeContainer"
+      >
+        <q-spinner v-if="iframeLoading" color="primary" size="7em" />
+        <iframe
+          id="video_embed"
+          src="https://player.twitch.tv/?channel=sorakabananuda&parent=stream.luansilva.com.br"
+          height="100%"
+          width="100%"
+          frameborder="0"
+          scrolling="no"
+          style="border: none;"
+          v-show="!iframeLoading"
+        >
+        </iframe>
+      </div>
 
-        <div
-          style="position: relative; height: 58%; width: 100%; display: flex; align-items: center; justify-content: center;">
-          <q-spinner v-if="iframeLoading" color="primary" size="7em" />
-          <iframe frameborder="0" scrolling="no" id="chat_embed" :src="darkModeUrl" @load="iframeLoaded" height="100%"
-            width="100%" style="border: none;" v-show="!iframeLoading"></iframe>
-        </div>
-      </q-drawer>
+      <div
+        style="position: relative; height: 58%; width: 100%; display: flex; align-items: center; justify-content: center;"
+        class="iframeContainer"
+      >
+        <q-spinner v-if="iframeLoading" color="primary" size="7em" />
+        <iframe
+          frameborder="0"
+          scrolling="no"
+          id="chat_embed"
+          :src="darkModeUrl"
+          @load="iframeLoaded"
+          height="100%"
+          width="100%"
+          style="border: none;"
+          v-show="!iframeLoading"
+        >
+        </iframe>
+      </div>
+    </q-drawer>
 
       <q-page-container :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']">
         <router-view />
@@ -123,4 +150,7 @@ const getColor = () => {
 .bg-white {
   transition: background-color 1s ease, color 1s ease;
 }
+.iframeContainer {
+    transition: 1s ease;
+  }
 </style>
