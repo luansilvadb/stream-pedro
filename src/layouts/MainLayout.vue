@@ -1,39 +1,26 @@
 <template>
-  <div>
+  <div :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']">
     <q-layout view="hHh LpR fFf" :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']">
       <q-header :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']">
-    <q-toolbar >
-      <q-btn dense flat round icon="menu" @click="toggleDrawer" />
-      <q-toolbar-title class="toolbar-title" >
-        <router-link
-          :to="{ path: '/' }"
-          class="router-link"
-          @mouseover="hover = true"
-          @mouseleave="hover = false"
-        >
-          <q-avatar >
-            <img src="../assets/logo-main.png" />
-          </q-avatar >
-          <b :style="{color: getColor()}">SorakaFlix</b>
+        <q-toolbar :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']">
+          <q-btn dense flat round icon="menu" @click="toggleDrawer" />
+          <q-toolbar-title class="toolbar-title">
+            <router-link :to="{ path: '/' }" class="router-link" @mouseover="hover = true" @mouseleave="hover = false">
+              <q-avatar>
+                <img src="../assets/logo-main.png" />
+              </q-avatar>
+              <b :style="{ color: getColor() }">SorakaFlix</b>
+            </router-link>
+          </q-toolbar-title>
+          <q-btn dense flat round icon="dark_mode" @click="toggleDarkMode" />
+        </q-toolbar>
+      </q-header>
 
-        </router-link>
-      </q-toolbar-title >
-      <q-btn  dense flat round icon="dark_mode" @click="toggleDarkMode" />
-      </q-toolbar>
-    </q-header>
-
-      <q-drawer
-        v-model="drawer"
-        show-if-above
-        :mini="miniState"
-        @mouseover="miniState = false"
-        @mouseout="miniState = true"
-        :width="200"
-        :breakpoint="500"
-        :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']"
-      >
-        <q-scroll-area class="fit">
-          <q-list>
+      <q-drawer v-model="drawer" show-if-above :mini="miniState" @mouseover="miniState = false"
+        @mouseout="miniState = true" :width="200" :breakpoint="500"
+        :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']">
+        <q-scroll-area class="fit" :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']">
+          <q-list :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']">
             <template v-for="(menuItem, index) in menuList" :key="index">
               <q-item clickable v-ripple :to="menuItem.route">
                 <q-item-section avatar>
@@ -49,19 +36,25 @@
         </q-scroll-area>
       </q-drawer>
 
-      <q-drawer show-if-above v-model="rightDrawerOpen" side="right" width="340" :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']">
-  <div style="position: relative; height: 40%; width: 100%; display: flex; align-items: center; justify-content: center;">
-    <q-spinner v-if="iframeLoading" color="primary" size="7em" />
-    <iframe id="video_embed" src="https://player.twitch.tv/?channel=sorakabananuda&parent=stream.luansilva.com.br" height="100%" width="100%" frameborder="0" scrolling="no" style="border: none;" v-show="!iframeLoading"></iframe>
-  </div>
+      <q-drawer show-if-above v-model="rightDrawerOpen" side="right" width="340"
+        :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']">
+        <div
+          style="position: relative; height: 40%; width: 100%; display: flex; align-items: center; justify-content: center;">
+          <q-spinner v-if="iframeLoading" color="primary" size="7em" />
+          <iframe id="video_embed" src="https://player.twitch.tv/?channel=sorakabananuda&parent=stream.luansilva.com.br"
+            height="100%" width="100%" frameborder="0" scrolling="no" style="border: none;"
+            v-show="!iframeLoading"></iframe>
+        </div>
 
-  <div style="position: relative; height: 58%; width: 100%; display: flex; align-items: center; justify-content: center;">
-    <q-spinner v-if="iframeLoading" color="primary" size="7em" />
-    <iframe frameborder="0" scrolling="no" id="chat_embed" :src="darkModeUrl" @load="iframeLoaded" height="100%" width="100%" style="border: none;" v-show="!iframeLoading"></iframe>
-  </div>
-</q-drawer>
+        <div
+          style="position: relative; height: 58%; width: 100%; display: flex; align-items: center; justify-content: center;">
+          <q-spinner v-if="iframeLoading" color="primary" size="7em" />
+          <iframe frameborder="0" scrolling="no" id="chat_embed" :src="darkModeUrl" @load="iframeLoaded" height="100%"
+            width="100%" style="border: none;" v-show="!iframeLoading"></iframe>
+        </div>
+      </q-drawer>
 
-      <q-page-container>
+      <q-page-container :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']">
         <router-view />
       </q-page-container>
 
@@ -100,6 +93,9 @@ const toggleDrawer = () => {
 const toggleDarkMode = () => {
   $q.dark.toggle()
   iframeLoading.value = true
+  $q.nextTick(() => {
+    iframeLoaded()
+  })
 }
 
 const iframeLoaded = () => {
@@ -113,23 +109,18 @@ const getColor = () => {
 }
 
 </script>
+
 <style scoped>
 .router-link {
   text-decoration: none;
-
 }
 
 .router-link:hover {
   cursor: pointer !important;
 }
 
-body.dark .router-link > b {
-  color: white;
+.bg-dark,
+.bg-white {
+  transition: background-color 1s ease, color 1s ease;
 }
-
-body:not(.dark) .router-link > b,
-body.light .router-link > b {
-  color: rgb(0, 0, 0);
-}
-
 </style>
