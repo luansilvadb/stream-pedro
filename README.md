@@ -6,14 +6,6 @@
 
 SorakaFlix é um serviço de streaming que permite aos usuários assistirem a uma variedade de filmes, séries e documentários, não transmitindo diretamente na Twitch por conta do DMCA
 
-## Como Usar
-
-Para começar a usar o SorakaFlix, siga estes passos:
-
-1. Faça seu cadastro na plataforma.
-2. Escolha o plano de assinatura que melhor se adapta a você.
-3. Explore e assista ao conteúdo disponível!
-
 ## Contribuindo
 
 Contribuições são sempre bem-vindas! Aqui estão as maneiras pelas quais você pode contribuir:
