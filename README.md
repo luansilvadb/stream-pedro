@@ -4,7 +4,7 @@
 
 ## Sobre o Projeto
 
-SorakaFlix é um serviço de streaming que permite aos usuários assistirem a uma variedade de filmes, séries e documentários.
+SorakaFlix é um serviço de streaming que permite aos usuários assistirem a uma variedade de filmes, séries e documentários, não transmitindo diretamente na Twitch por conta do DMCA
 
 ## Como Usar
 
