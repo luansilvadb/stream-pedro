@@ -35,4 +35,4 @@ Distribuído sob a licença MIT. Veja `LICENSE` para mais informações.
 
 ## Contato
 
-Seu Nome - Seu email
+Luan - luan.videira@gmail.com
