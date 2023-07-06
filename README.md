@@ -10,8 +10,8 @@ SorakaFlix é um serviço de streaming que permite aos usuários assistirem a um
 
 Contribuições são sempre bem-vindas! Aqui estão as maneiras pelas quais você pode contribuir:
 
-- [Reportando bugs](#report-bugs)
-- [Sugerindo melhorias](#suggest-enhancements)
+- [Reportando bugs](https://github.com/luansilvadb/stream-pedro/issues)
+- [Sugerindo melhorias](https://github.com/luansilvadb/stream-pedro/issues)
 
 ### Reportando Bugs
 
