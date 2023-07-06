@@ -1,33 +1,38 @@
-# Quasar App (primeiro-app)
+# SorakaFlix
 
-A Quasar Project
+![SorakaFlix](https://i.imgur.com/rK5zeVB.png)
 
-## Install the dependencies
-```bash
-yarn
-# or
-npm install
-```
+## Sobre o Projeto
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
-```bash
-quasar dev
-```
+SorakaFlix é um serviço de streaming que permite aos usuários assistirem a uma variedade de filmes, séries e documentários.
 
+## Como Usar
 
-### Lint the files
-```bash
-yarn lint
-# or
-npm run lint
-```
+Para começar a usar o SorakaFlix, siga estes passos:
 
+1. Faça seu cadastro na plataforma.
+2. Escolha o plano de assinatura que melhor se adapta a você.
+3. Explore e assista ao conteúdo disponível!
 
+## Contribuindo
 
-### Build the app for production
-```bash
-quasar build
-```
+Contribuições são sempre bem-vindas! Aqui estão as maneiras pelas quais você pode contribuir:
 
-### Customize the configuration
-See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js).
+- [Reportando bugs](#report-bugs)
+- [Sugerindo melhorias](#suggest-enhancements)
+
+### Reportando Bugs
+
+Para reportar um bug, abra uma nova issue, descreva o bug e adicione as labels necessárias.
+
+### Sugerindo melhorias
+
+Para sugerir melhorias, abra uma nova issue, descreva sua sugestão e adicione as labels necessárias.
+
+## Licença
+
+Distribuído sob a licença MIT. Veja `LICENSE` para mais informações.
+
+## Contato
+
+Seu Nome - Seu email
