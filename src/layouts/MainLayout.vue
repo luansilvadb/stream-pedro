@@ -39,19 +39,19 @@
       <q-drawer show-if-above v-model="rightDrawerOpen" side="right" width="340"
         :class="[$q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-dark']">
         <div
-          style="position: relative; height: 40%; width: 100%; display: flex; align-items: center; justify-content: center;">
-          <q-spinner v-if="iframeLoading" :color="$q.dark.isActive ? 'white' : 'primary'" size="7em" />
-          <iframe id="video_embed" src="https://player.twitch.tv/?channel=sorakabananuda&parent=stream.luansilva.com.br"
-            height="100%" width="100%" frameborder="0" scrolling="no" style="border: none;"
-            v-show="!iframeLoading">
+          style="position: relative; height: 21.5%; width: 100%; display: flex; align-items: center; justify-content: center;">
+          <q-spinner v-if="getIframeLoading" :color="$q.dark.isActive ? 'white' : 'primary'" size="7em" />
+          <iframe id="video_embed" :src="getVideoSrc" height="100%" width="100%" frameborder="0" scrolling="no"
+            style="border: none;" v-show="!getIframeLoading">
           </iframe>
         </div>
 
         <div
-          style="position: relative; height: 58%; width: 100%; display: flex; align-items: center; justify-content: center;">
-          <q-spinner v-if="iframeLoading" :color="$q.dark.isActive ? 'white' : 'primary'" size="7em" />
-          <iframe frameborder="0" scrolling="no" id="chat_embed" :src="darkModeUrl" @load="iframeLoaded" height="100%"
-            width="100%" style="border: none;" v-show="!iframeLoading"></iframe>
+          style="position: relative; height: 78.5%; width: 100%; display: flex; align-items: center; justify-content: center;">
+          <q-spinner v-if="getIframeLoading" :color="$q.dark.isActive ? 'white' : 'primary'" size="7em" />
+          <iframe frameborder="0" scrolling="no" id="chat_embed" :src="getChatSrc" @load="iframeLoaded" height="100%"
+            width="100%" style="border: none;" v-show="!getIframeLoading">
+          </iframe>
         </div>
       </q-drawer>
 
@@ -70,7 +70,9 @@ import { useQuasar } from 'quasar'
 const drawer = ref(false)
 const miniState = ref(true)
 const rightDrawerOpen = ref(false)
-const iframeLoading = ref(true)
+const iframeLoadingDark = ref(true)
+const iframeLoadingLight = ref(true)
+const iframeLoadingTheme = ref('dark') // Padrão para o tema escuro
 const $q = useQuasar()
 
 const menuList = [
@@ -83,8 +85,20 @@ const menuList = [
   }
 ]
 
-const darkModeUrl = computed(() => {
-  return $q.dark.isActive ? 'https://www.twitch.tv/embed/sorakabananuda/chat?parent=stream.luansilva.com.br&darkpopout' : 'https://www.twitch.tv/embed/sorakabananuda/chat?parent=stream.luansilva.com.br'
+const getIframeLoading = computed(() => {
+  return iframeLoadingTheme.value === 'dark' ? iframeLoadingDark.value : iframeLoadingLight.value
+})
+
+const getVideoSrc = computed(() => {
+  return $q.dark.isActive
+    ? 'https://player.twitch.tv/?channel=sorakabananuda&parent=stream.luansilva.com.br&darkpopout'
+    : 'https://player.twitch.tv/?channel=sorakabananuda&parent=stream.luansilva.com.br'
+})
+
+const getChatSrc = computed(() => {
+  return $q.dark.isActive
+    ? 'https://www.twitch.tv/embed/sorakabananuda/chat?parent=stream.luansilva.com.br&darkpopout'
+    : 'https://www.twitch.tv/embed/sorakabananuda/chat?parent=stream.luansilva.com.br'
 })
 
 const toggleDrawer = () => {
@@ -93,15 +107,22 @@ const toggleDrawer = () => {
 
 const toggleDarkMode = () => {
   $q.dark.toggle()
-  iframeLoading.value = true
+  iframeLoadingTheme.value = $q.dark.isActive ? 'dark' : 'light'
+  iframeLoadingDark.value = true
+  iframeLoadingLight.value = true
   $q.nextTick(() => {
     iframeLoaded()
   })
 }
 
 const iframeLoaded = () => {
-  iframeLoading.value = false
+  if (iframeLoadingTheme.value === 'dark') {
+    iframeLoadingDark.value = false
+  } else {
+    iframeLoadingLight.value = false
+  }
 }
+
 const hover = ref(false)
 
 const getColor = () => {
