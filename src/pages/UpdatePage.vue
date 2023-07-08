@@ -32,6 +32,12 @@ export default {
     return {
       updates: [
         {
+          version: 'v1.0.6',
+          date: '08 Julho, 2023',
+          shortNotes: 'BUG darkmode',
+          notes: 'Corrigido bug dark mode, quando alternava o video sumia'
+        },
+        {
           version: 'v1.0.5',
           date: '02 Julho, 2023',
           shortNotes: 'Player',
