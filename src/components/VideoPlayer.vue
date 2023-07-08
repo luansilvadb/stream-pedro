@@ -28,10 +28,10 @@ export default {
       const hls = new Hls({
         liveDurationInfinity: true // Remover barra de carregamento para streams ao vivo
       })
-      hls.loadSource('https://live.luansilva.com.br/memfs/fa1a5fc6-d979-465f-9307-cc17cda3178c.m3u8')
+      hls.loadSource('https://live.luansilva.com.br/memfs/137ab0b4-dd5c-4288-81ba-a6d21d804e94.m3u8')
       hls.attachMedia(player.media)
     } else if (player.media.canPlayType('application/vnd.apple.mpegurl')) {
-      player.media.src = 'https://live.luansilva.com.br/memfs/fa1a5fc6-d979-465f-9307-cc17cda3178c.m3u8'
+      player.media.src = 'https://live.luansilva.com.br/memfs/137ab0b4-dd5c-4288-81ba-a6d21d804e94.m3u8'
     }
   }
 }
